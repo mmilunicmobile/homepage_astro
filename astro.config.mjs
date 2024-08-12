@@ -19,7 +19,6 @@ export default defineConfig({
         remarkPlugins: [remarkMath],
         rehypePlugins: [rehypeKatex]
     }), solidJs(), tailwind({
-        applyBaseStyles: false,
-    }
-    )]
+        applyBaseStyles: false
+    })]
 });

@@ -1,13 +1,17 @@
 ---
+import { Image } from "astro:assets";
+
 const { image, speaker } = Astro.props;
 ---
 
 <div class="mx-auto bg-white rounded-xl shadow-md overflow-hidden max-w-xl">
     <div class="sm:flex space-y-6 sm:space-x-6 p-8">
         <div class="sm:shrink-0">
-            <img
-                class="h-30 w-30 rounded-full mx-auto"
-                src={image.src}
+            <Image
+                class="rounded-full mx-auto"
+                src={image}
+                width="130"
+                height="130"
                 alt={`${speaker}'s image`}
             />
         </div>

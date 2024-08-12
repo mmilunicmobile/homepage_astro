@@ -51,6 +51,3 @@ const CountQuote = (props, values) => {
 }
 
 export { CountQuote, CustomQuote, CodeQuote }
-
-
-
