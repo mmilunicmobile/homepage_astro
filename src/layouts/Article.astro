@@ -11,7 +11,7 @@ const {
 ---
 
 <Layout title={`${title} - Mathum`} description={description}>
-    <div transition:animate="slide"><slot /></div>
+    <slot />
     <nav class="navbar">
         {
             prev !== undefined ? (
