@@ -7,6 +7,12 @@ import solidJs from "@astrojs/solid-js";
 
 // https://astro.build/config
 export default defineConfig({
+    redirects: {
+        '/article/[slug].html': {
+            status: 302,
+            destination: '/article/[slug]'
+        }
+    },
     site: 'https://mathuml.mooo.com',
     integrations: [mdx({
         remarkPlugins: [remarkMath],
