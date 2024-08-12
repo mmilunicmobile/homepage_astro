@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import Article from "../../layouts/Article.astro";
+// 1. Generate a new path for every collection entry
+
+export async function getStaticPaths() {
+    const collection = await getCollection("article");
+
+    const sortedCollection = collection.sort((a, b) => {
+        return a.data.date < b.data.date ? -1 : 1;
+    });
+
+    const links = [];
+
+    for (let i = 0; i < sortedCollection.length; i++) {
+        links.push([
+            sortedCollection[i - 1],
+            sortedCollection[i],
+            sortedCollection[i + 1],
+        ]);
+    }
+
+    return links.map(([prev, entry, next]) => ({
+        params: { slug: entry.slug },
+        props: { entry, prev, next },
+    }));
+}
+// 2. For your template, you can get the entry directly from the prop
+const { entry, prev, next } = Astro.props;
+const { Content } = await entry.render();
+
+const { title = entry.data?.name, description } = entry.data;
+---
+
+<Article title={title} description={description} prev={prev} next={next}>
+    <Content />
+</Article>

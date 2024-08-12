@@ -1,0 +1,93 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+import { getCollection, getEntry } from "astro:content";
+
+const collection = await getCollection("article");
+
+const sortedCollection = collection.sort((a, b) => {
+	return a.data.date < b.data.date ? -1 : 1;
+});
+
+const my_websites = [
+	["Listr: A Sorting App", "https://mmilunicmobile.github.io/listr/"],
+	["bandquiz.mathuml.mooo.com", "http://bandquiz.mathuml.mooo.com"],
+];
+
+const other_websites = [
+	["falstad.com", "https://www.falstad.com/"],
+	["gregorybard.com", "http://gregorybard.com/home.html"],
+	["Integral Calculator", "https://www.integral-calculator.com/"],
+	["Antenna-Theory.com", "https://www.antenna-theory.com/"],
+	["Paul's Online Notes", "https://tutorial.math.lamar.edu/"],
+];
+
+const links = [];
+
+for (let i = 0; i < sortedCollection.length; i++) {
+	links.push([
+		sortedCollection[i - 1],
+		sortedCollection[i],
+		sortedCollection[i + 1],
+	]);
+}
+---
+
+<Layout
+	title="Mathum"
+	description="Mathum is a collection of articles written about math programming and anything in between."
+>
+	<h1>This is my (dodgy) homepage!</h1>
+	<p>
+		Who am I? Beats me. I kinda just like making stuff and was too lazy to
+		set up Hugo so I made my webpage this way. You could check out some of
+		the articles I've written. The voices say they're pretty good. Also, all
+		my websites are now under one domain and linked in one spot. Now you
+		won't need to go testing links for hours to see if a site is running!
+	</p>
+	<h2>Cool articles I've written:</h2>
+	<ul>
+		{
+			links.map(([prev, entry, next]) => {
+				const { name = "Article", date = "9999-99-99" } = entry.data;
+				return (
+					<li>
+						<a href={`/article/${entry.slug}`}>{name}</a>
+					</li>
+				);
+			})
+		}
+	</ul>
+	<h2>Websites I've made:</h2>
+	<ul>
+		{
+			my_websites.map((entry) => {
+				const [name, url] = entry;
+				return (
+					<li>
+						<a href={url}>{name}</a>
+					</li>
+				);
+			})
+		}
+	</ul>
+	<h2>Cooler websites I haven't made:</h2>
+	<ul>
+		{
+			other_websites.map((entry) => {
+				const [name, url] = entry;
+				return (
+					<li>
+						<a href={url}>{name}</a>
+					</li>
+				);
+			})
+		}
+	</ul>
+	<p>
+		This is an afternote, but this website was heavily inspired by the lack
+		of a framework on older sites. I hope to maintain a very simplistic and
+		minimalist look on this website at least just because I like how it
+		looks.
+	</p>
+</Layout>
