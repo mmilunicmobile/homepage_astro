@@ -1,0 +1,23 @@
+---
+const { image, speaker } = Astro.props;
+---
+
+<div class="mx-auto bg-white rounded-xl shadow-md overflow-hidden max-w-xl">
+    <div class="sm:flex space-y-6 sm:space-x-6 p-8">
+        <div class="sm:shrink-0">
+            <img
+                class="h-30 w-30 rounded-full mx-auto"
+                src={image.src}
+                alt={`${speaker}'s image`}
+            />
+        </div>
+        <div class="flex-auto">
+            <div
+                class="block mt-1 text-xl leading-tight font-medium text-black"
+            >
+                <slot />
+            </div>
+            <p class="mt-2 text-slate-600 text-right">- {speaker}</p>
+        </div>
+    </div>
+</div>

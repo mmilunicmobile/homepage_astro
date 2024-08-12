@@ -1,0 +1,77 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/app.css";
+import asa from "../images/asa.jpeg";
+import anshi from "../images/anshi.jpeg";
+import matthew from "../images/matthew.jpeg";
+import Testimonial from "~/components/Testimonial.astro";
+import Card from "~/components/Card.astro";
+---
+
+<Layout
+    title="Programming Team Info"
+    description="Programming Team Info in case you need it"
+>
+    <div class="bg-black">
+        <h1
+            class="md:text-6xl text-4xl font-semibold p-12 mr-auto max-w-fit bg-gradient-to-r from-orange-500 to-red-400 bg-clip-text text-transparent"
+        >
+            Join the Krypton Cougars Programming Team!
+        </h1>
+    </div>
+    <div class="p-6">
+        <p class="font-medium">
+            When you join the Krypton Cougars Programming Team, a world of
+            opportunities open up for you.
+        </p>
+    </div>
+    <div class="bg-gray-800">
+        <div
+            class="p-6 flex flex-col space-x-0 space-y-4 max-w-screen-md mx-auto"
+        >
+            <div
+                class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-4 sm:space-y-0"
+            >
+                <Card title="Program Robots">
+                    We have access to a multi-thousand dollar, high performance,
+                    custom constructed robot. And you get to program it however
+                    you like. (Within reason of course.)
+                </Card>
+                <Card title="Find Friends">
+                    On the Krypton Cougars Programming Team, we have access to
+                    plenty of people. We promise (most of us) don't bite!
+                </Card>
+            </div>
+            <div
+                class="flex flex-col sm:flex-row space-x-0 sm:space-x-4 space-y-4 sm:space-y-0"
+            >
+                <Card title="Learn Skills"
+                    >Our robots use the versatile programming language of Java.
+                    Additionally, our scouting app uses Dart with Flutter.</Card
+                >
+                <Card title="Feel Worthless">
+                    One of the core tenants of the Krypton Cougars is our
+                    horrible culture. If you are part of the team for long while
+                    you will realize that you are powerless to change it as
+                    well. Good luck!
+                </Card>
+            </div>
+        </div>
+    </div>
+    <div class="p-6">
+        <p class="font-medium">Read our incredible reviews!</p>
+    </div>
+    <div class="bg-gray-800 p-6 space-y-12">
+        <Testimonial image={anshi} speaker="Anshi Paul">
+            Honestly, its actually kinda mid.
+        </Testimonial>
+        <Testimonial image={asa} speaker="Asa Wang">
+            It was the most skibidy of times, it was the least skibidy of times,
+            it was the age of sigma, it was the age of betas.
+        </Testimonial>
+        <Testimonial image={matthew} speaker="Matthew Milunic">
+            I'm addicted. And not in a good way. (This feels like an abusive
+            relationship.)
+        </Testimonial>
+    </div>
+</Layout>
